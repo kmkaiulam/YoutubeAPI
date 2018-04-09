@@ -10,12 +10,18 @@ function retrieveYoutubeData(searchTerm, callback){
     $.getJSON(YOUTUBE_SEARCH_URL, query, callback);
 }
 
-function renderData() {
-    console.log("This is render data.");
+function renderData(result) {
+    return `
+    <div>
+        <h2>
+        <a class ="js-result-name" href = "${result.html_url}" target = "_blank"></a>
+        </h2>
+        `;
 }
 
-function displayYoutubeSearchData(){
-    console.log("Let's go!");
+function displayYoutubeSearchData(data){
+        const results = data.items.map((item, index) => renderData(item));
+        $('.js-search-results').html(results);
 }
 
 function listenSubmit(){
@@ -29,8 +35,4 @@ function listenSubmit(){
     console.log('This is listenSubmit');
 }
 
-function handleAPI(){
-    listenSubmit();
-}
-
-$(handleAPI);
+$(listenSubmit);

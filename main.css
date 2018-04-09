@@ -1,3 +1,13 @@
 *{
     box-sizing: border-box;
 }
+main{
+    background: lightgray;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid black;
+}
+.videoThumbnail{
+    border: 1px solid black;
+    padding: 20px;
+}

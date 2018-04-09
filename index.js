@@ -16,10 +16,11 @@ function retrieveYoutubeData(searchTerm, callback){
 function renderData(result) {
     return `
     <div>
-        <h2>
+        <h2> ${result.snippet.title}</h2>
+        <div>
         <a href = "https://www.youtube.com/watch?v=${result.id.videoId}" target = "_blank">
-        <img src = "${result.snippet.thumbnails.medium.url}"></a>
-        </h2>
+        <img class = "videoThumbnail" src = "${result.snippet.thumbnails.medium.url}"></a>
+        </div>
         `;
 }
 

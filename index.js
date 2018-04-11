@@ -1,3 +1,7 @@
+//create a function that gives back textual and ARIA feedback about the number of results for videos found, and reports that number to the screen reader
+
+
+
 const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
 let previousToken = "";
 let nextToken = "";
@@ -21,7 +25,7 @@ function renderData(result) {
         <h2> ${result.snippet.title}</h2>
         <div>
         <a href = "https://www.youtube.com/watch?v=${result.id.videoId}" target = "_blank">
-        <img class = "videoThumbnail" src = "${result.snippet.thumbnails.medium.url}", alt ="${result.snippet.title}"></a>
+        <img class = "videoThumbnail lightboxTrigger" src = "${result.snippet.thumbnails.medium.url}", alt ="${result.snippet.title}"></a>
         <a href = "https://www.youtube.com/channel/${result.snippet.channelId}" target = "_blank"> <input type ="button" value = "View Channel"> </a>
         </div>
         `;

@@ -21,7 +21,7 @@ function renderData(result) {
         <h2> ${result.snippet.title}</h2>
         <div>
         <a href = "https://www.youtube.com/watch?v=${result.id.videoId}" target = "_blank">
-        <img class = "videoThumbnail" src = "${result.snippet.thumbnails.medium.url}"></a>
+        <img class = "videoThumbnail" src = "${result.snippet.thumbnails.medium.url}", alt ="${result.snippet.title}"></a>
         <a href = "https://www.youtube.com/channel/${result.snippet.channelId}" target = "_blank"> <input type ="button" value = "View Channel"> </a>
         </div>
         `;

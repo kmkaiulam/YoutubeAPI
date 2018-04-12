@@ -7,6 +7,8 @@ let previousToken = "";
 let nextToken = "";
 let oldQuery = "";
 
+
+
 function retrieveYoutubeData(searchTerm, callback, token){
     const query = {
     part: 'snippet',
@@ -18,7 +20,7 @@ function retrieveYoutubeData(searchTerm, callback, token){
     };
     $.getJSON(YOUTUBE_SEARCH_URL, query, callback);
 }
-
+// render data into the DOM
 function renderData(result) {
     return `
     <div>
@@ -30,7 +32,6 @@ function renderData(result) {
         </div>
         `;
 }
-
 
 
 function displayYoutubeSearchData(data){
@@ -52,7 +53,9 @@ function displayYoutubeSearchData(data){
         $('#previousButton').hide();
     }
     const results = data.items.map((item) => renderData(item));
-       
+        $('#resultsCounter')
+            .prop('hidden', false)
+            .html(`${data.pageInfo.totalResults} Results Found`);
         $('.js-search-results').html(results);
 }
 

@@ -34,6 +34,7 @@ function renderData(result) {
 }
 
 
+
 function displayYoutubeSearchData(data){
     console.log(data);
     if (data.nextPageToken) {
@@ -53,22 +54,23 @@ function displayYoutubeSearchData(data){
         $('#previousButton').hide();
     }
     const results = data.items.map((item) => renderData(item));
-        $('#resultsCounter')
-            .prop('hidden', false)
-            .html(`${data.pageInfo.totalResults} Results Found`);
-        $('.js-search-results').html(results);
-}
+        $('.js-search-results').html(results);       
+    //The following seems to have issues with Chrome, but not IE - causing my screen reader to read what has been updated 3 times
+       $('#js-resultsCounter').html(`${data.pageInfo.totalResults} Results Found`);
+       $('#js-thumbnailCounter').html(`${data.pageInfo.resultsPerPage} Thumbnails Displayed`);
 
+}   
+//listen for submit and render Results Found in DOM
 function listenSubmit(){
     $('.js-search-form').submit(event =>{
         event.preventDefault();
         const queryTarget =$(event.currentTarget).find ('.js-query');
         const query = queryTarget.val();
-        console.log(query);
         oldQuery = query;
         queryTarget.val("");
         retrieveYoutubeData(query, displayYoutubeSearchData,"");
-        
+      
+        console.log(query);  
     })
     $('#nextButton').click( event =>{
         event.preventDefault();
@@ -78,7 +80,7 @@ function listenSubmit(){
         event.preventDefault();
         retrieveYoutubeData(oldQuery, displayYoutubeSearchData, previousToken);
     })
-    console.log('This is listenSubmit');
+    
 }
 
 

@@ -56,7 +56,9 @@ function displayYoutubeSearchData(data){
     const results = data.items.map((item) => renderData(item));
         $('.js-search-results').html(results);       
     //The following seems to have issues with Chrome, but not IE - causing my screen reader to read what has been updated 3 times
-       $('#js-resultsCounter').html(`${data.pageInfo.totalResults} Results Found`);
+     $('#js-resultsCounter').prop('hidden', false);
+     $('#js-thumbnailCounter').prop('hidden',false);
+        $('#js-resultsCounter').html(`${data.pageInfo.totalResults} Results Found`);
        $('#js-thumbnailCounter').html(`${data.pageInfo.resultsPerPage} Thumbnails Displayed`);
 
 }   
